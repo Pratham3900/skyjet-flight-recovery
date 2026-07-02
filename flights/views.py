@@ -34,19 +34,24 @@ def book_flight(request, flight_id):
         form = BookingConfirmForm(request.POST)
         if form.is_valid():
             booking = Booking.objects.create(passenger=request.user, flight=flight)
-            html_content = render_to_string('flights/emails/booking_email.html', {
-                'username': request.user.username,
-                'pnr': booking.pnr,
-                'flight': flight,
-            })
-            email = EmailMultiAlternatives(
-                subject=f'Booking Confirmed — PNR {booking.pnr}',
-                body=f"Your booking for flight {flight.flight_number} is confirmed. PNR: {booking.pnr}",
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                to=[request.user.email],
-            )
-            email.attach_alternative(html_content, "text/html")
-            email.send(fail_silently=False)
+
+            try:
+                html_content = render_to_string('flights/emails/booking_email.html', {
+                    'username': request.user.username,
+                    'pnr': booking.pnr,
+                    'flight': flight,
+                })
+                email = EmailMultiAlternatives(
+                    subject=f'Booking Confirmed — PNR {booking.pnr}',
+                    body=f"Your booking for flight {flight.flight_number} is confirmed. PNR: {booking.pnr}",
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    to=[request.user.email],
+                )
+                email.attach_alternative(html_content, "text/html")
+                email.send(fail_silently=False)
+            except Exception as e:
+                pass  # booking still succeeds even if email fails
+
             return redirect('booking_confirmation', booking_id=booking.id)
     return redirect('flight_list')
 
