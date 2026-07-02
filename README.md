@@ -146,9 +146,6 @@ pip install -r requirements.txt
 
 Copy `.env.example` to a new file named `.env`, then fill in your own Gmail credentials:
 ```
-SECRET_KEY=your-secret-key-here
-DEBUG=True
-ALLOWED_HOSTS=127.0.0.1,localhost
 EMAIL_HOST_USER=your-email@gmail.com
 EMAIL_HOST_PASSWORD=your-16-character-gmail-app-password
 ```
@@ -191,8 +188,7 @@ Visit `http://127.0.0.1:8000` in your browser.
 7. Open that link (no login needed) and pick a recovery option — Rebook, Refund, Voucher, or Contact agent
 8. Check inbox again for the recovery confirmation email
 9. Log in as the passenger and confirm the dashboard now reflects the updated booking status
-10. Log in as admin again and check **Dashboard → View bookings** to see the resolved booking, and confirm a support ticket was logged if "Contact agent" was chosen
-
+10. Log in as admin again and check **Dashboard → View bookings** to see the resolved booking
 ---
 
 ## Screenshots and demo assets
@@ -204,10 +200,10 @@ Visit `http://127.0.0.1:8000` in your browser.
 
 ## Acknowledgment
 
-This project's code, styling, and documentation were developed with the assistance of **Claude (Anthropic)** as an AI pair-programming and design tool throughout the 48-hour build window, alongside **Django REST Framework** for the API layer design.
-
+Help during project: Claude (AI) and Django REST Framework.
 ---
 
 ## Author
 
 Pratham Danawala — MCA, CHARUSAT University (CMPICA)
+StudentID- 25MCA046
