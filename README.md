@@ -68,7 +68,6 @@ This is the exact flow implemented in the app, from registration through disrupt
 | API | Django REST Framework |
 | Database | SQLite (local dev) / PostgreSQL (production, Render) |
 | Email | Django SMTP backend via Gmail (HTML transactional emails) |
-| Static files | WhiteNoise |
 | Deployment | Render (Web Service + PostgreSQL) |
 | Frontend | Django templates,CSS (no framework) |
 
