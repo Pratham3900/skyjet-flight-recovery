@@ -213,7 +213,7 @@ Visit `http://127.0.0.1:8000` in your browser.
 4. Log out, log back in as the superuser account created in setup step 6
 5. Go to **Dashboard → Manage flights**, find the flight you just booked, and mark it **Cancelled** (or **Delayed** with delay minutes ≥ 120)
 6. Check the passenger's inbox for the disruption email with the recovery portal link
-7. Open that link (no login needed) and pick a recovery option — Rebook, Refund, Voucher, or Contact agent
+7. Open that link (no login needed) and pick a recovery option — Rebook, Refund, Voucher
 8. Check inbox again for the recovery confirmation email
 9. Log in as the passenger and confirm the dashboard now reflects the updated booking status
 10. Log in as admin again and check **Dashboard → View bookings** to see the resolved booking
