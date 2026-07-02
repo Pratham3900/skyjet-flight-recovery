@@ -6,7 +6,7 @@ A digital self-service platform that lets passengers resolve flight disruptions 
 
 **Live demo:** [https://skyjet-flight-recovery.onrender.com](https://skyjet-flight-recovery.onrender.com)
 
-**Demo video / screen recording:** https://drive.google.com/file/d/1GmS5dGampM0WxbCftkL3lGp4YUHGoWsv/view?usp=sharing
+**Demo video / screen recording:** https://drive.google.com/drive/folders/1ZuWH_fI-7wzH_1EV24kicvsEZbwC1GuT?usp=sharing
 
 **GitHub repo:** [https://github.com/Pratham3900/skyjet-flight-recovery](https://github.com/Pratham3900/skyjet-flight-recovery)
 
@@ -221,7 +221,7 @@ Visit `http://127.0.0.1:8000` in your browser.
 
 ## Screenshots and demo assets
 
-- Full screen recording / walkthrough video: https://drive.google.com/file/d/1GmS5dGampM0WxbCftkL3lGp4YUHGoWsv/view?usp=sharing
+- Full screen recording / walkthrough video: https://drive.google.com/drive/folders/1ZuWH_fI-7wzH_1EV24kicvsEZbwC1GuT?usp=sharing
 - Screenshots: https://drive.google.com/drive/folders/1ZuWH_fI-7wzH_1EV24kicvsEZbwC1GuT?usp=sharing
 
 ---
