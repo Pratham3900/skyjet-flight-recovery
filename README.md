@@ -120,6 +120,27 @@ Built with Django REST Framework's class-based generic views (`ListAPIView`, `Li
 - Recovery portal is public and PNR-based, so passengers can act from the email link without logging in
 
 ---
+## Demo credentials
+
+**Admin (staff) login** — pre-created via environment variables at deploy time, since Render's free tier does not provide shell access to run `createsuperuser` manually:
+```
+Username: admin
+Password: 12345678
+```
+
+**Passenger login** — no fixed demo account. Register a new passenger account directly on the live app (`/accounts/register/`) using any email you can access, since the flow depends on receiving real welcome/booking/recovery emails.
+
+## Known limitations
+
+- Email does not work on the live Render deployment — outbound SMTP (port 587) is blocked on Render's free tier. The app works correctly with email when run locally. Booking/registration/recovery actions still complete successfully on Render; only the email notification step fails silently in the background.
+
+## Future enhancements
+
+- Move email sending to a transactional email API to work reliably on any host
+- SMS/push notifications alongside email
+- Real payment gateway integration for refunds
+- Role-based admin permissions beyond a single `is_staff` flag
+- Background job queue (e.g. Celery) for async email sending instead of blocking the request
 
 ## Setup instructions (run locally)
 
