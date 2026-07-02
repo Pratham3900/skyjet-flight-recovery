@@ -1,0 +1,10 @@
+{
+  "$schema": "https://railway.app/railway.schema.json",
+  "build": {
+    "builder": "RAILPACK",
+    "buildCommand": "chmod +x build.sh && ./build.sh"
+  },
+  "deploy": {
+    "startCommand": "gunicorn skyjet_recovery.wsgi:application --bind 0.0.0.0:$PORT"
+  }
+}
