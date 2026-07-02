@@ -5,7 +5,9 @@
 A digital self-service platform that lets passengers resolve flight disruptions — cancellations and major delays — without calling a contact center agent. Built as a 48-hour MVP for a regional airline operating 65 aircraft across Asia.
 
 **Live demo:** [https://skyjet-flight-recovery.onrender.com](https://skyjet-flight-recovery.onrender.com)
+
 **Demo video / screen recording:** [Add your Google Drive link here]
+
 **GitHub repo:** [https://github.com/Pratham3900/skyjet-flight-recovery](https://github.com/Pratham3900/skyjet-flight-recovery)
 
 > Note: the live app is hosted on Render's free tier, which spins down after 15 minutes of inactivity. The first request after idle may take 30–50 seconds to respond.
@@ -34,13 +36,12 @@ This is the exact flow implemented in the app, from registration through disrupt
    - **Delayed, and delay ≥ 120 minutes** → passenger is notified with recovery options
    - **Delayed, and delay < 120 minutes** → passenger receives **no email and no portal access** — the disruption is considered minor enough not to need self-service action, avoiding notification fatigue for short delays
 9. Affected passengers eligible for recovery receive a **disruption email** with a **PNR-based recovery portal link** — this link works without logging in, since it's meant to be opened directly from the email on any device
-10. On the **recovery portal**, the passenger picks one of four options:
+10. On the **recovery portal**, the passenger picks one of three options:
     - **Rebook** — choose an alternate flight on the same route, instantly re-booked
     - **Refund** — booking marked refunded (no live payment processing, per constraint)
     - **Travel voucher** — booking marked as voucher issued
-    - **Contact agent** — booking escalated, and a support ticket is logged internally with context, so a human agent isn't starting from zero
-11. Whichever option is chosen, a **recovery confirmation email** is sent, and the passenger's dashboard status updates in real time (Disrupted → Rebooked / Refunded / Voucher Issued / Escalated)
-12. Admin can view **all bookings** across the airline in one place — searchable and filterable by status — to monitor how many passengers self-resolved vs. how many needed agent escalation
+11. Whichever option is chosen, a **recovery confirmation email** is sent, and the passenger's dashboard status updates in real time (Confirm → Rebooked / Refunded / Voucher Issued)
+12. Admin can view **all bookings** across the airline in one place — searchable and filterable by status — to monitor how many passengers self-resolved 
 
 ---
 
@@ -52,7 +53,7 @@ This is the exact flow implemented in the app, from registration through disrupt
 - Route-grouped, searchable admin flight list (grouped by origin → destination)
 - Rule-based disruption eligibility (cancellation vs. delay threshold)
 - Public, PNR-based recovery portal — no login required, matches how a real airline disruption email link would work
-- Four recovery actions: Rebook, Refund, Travel voucher, Contact agent (with internal ticket logging)
+- three recovery actions: Rebook, Refund, Travel voucher
 - Admin bookings dashboard with search + status filter, and an open-ticket counter
 - REST API layer (Django REST Framework) for flights and bookings, including a public PNR lookup endpoint
 - Seed script generating a realistic 65-aircraft flight schedule across Asian routes, with time-of-day flight patterns (morning/afternoon/evening/night) instead of fully random timings
@@ -69,7 +70,7 @@ This is the exact flow implemented in the app, from registration through disrupt
 | Email | Django SMTP backend via Gmail (HTML transactional emails) |
 | Static files | WhiteNoise |
 | Deployment | Render (Web Service + PostgreSQL) |
-| Frontend | Django templates, vanilla CSS (no framework) |
+| Frontend | Django templates,CSS (no framework) |
 
 ---
 
