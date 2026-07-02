@@ -18,25 +18,26 @@ def register_view(request):
                 password=form.cleaned_data['password']
             )
 
-            html_content = render_to_string('accounts/emails/welcome_email.html', {
-                'username': user.username,
-                'user_email': user.email,
-                'login_url': request.build_absolute_uri('/accounts/login/'),
-            })
-
-            email = EmailMultiAlternatives(
-                subject='Welcome to SkyJet Airways',
-                body=f"Hi {user.username}, your SkyJet account has been created successfully.",  # plain text fallback
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                to=[user.email],
-            )
-            email.attach_alternative(html_content, "text/html")
-            email.send(fail_silently=False)
+            try:
+                html_content = render_to_string('accounts/emails/welcome_email.html', {
+                    'username': user.username,
+                    'user_email': user.email,
+                    'login_url': request.build_absolute_uri('/accounts/login/'),
+                })
+                email = EmailMultiAlternatives(
+                    subject='Welcome to SkyJet Airways',
+                    body=f"Hi {user.username}, your SkyJet account has been created successfully.",
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    to=[user.email],
+                )
+                email.attach_alternative(html_content, "text/html")
+                email.send(fail_silently=False)
+            except Exception as e:
+                print(f"Welcome email failed for {user.username}: {e}")
 
             return redirect('login')
     else:
         form = RegisterForm()
-
     return render(request, 'accounts/register.html', {'form': form})
 
 
@@ -46,7 +47,6 @@ def login_view(request):
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
@@ -56,7 +56,6 @@ def login_view(request):
                     return redirect('passenger_dashboard')
     else:
         form = LoginForm()
-
     return render(request, 'accounts/login.html', {'form': form})
 
 
