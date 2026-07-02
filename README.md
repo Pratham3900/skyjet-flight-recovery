@@ -111,13 +111,13 @@ Built with Django REST Framework's class-based generic views (`ListAPIView`, `Li
 
 ## Key assumptions
 
-- No real payment gateway is integrated (per constraint) — Refund and Voucher actions update booking status only; a production version would integrate a payment/reconciliation system
-- Flight and passenger data is self-contained within this app (no external GDS/PSS integration) — in production this would pull from the airline's real inventory and PNR systems via API
-- Delay threshold for triggering self-service recovery is set at 120 minutes; below that, passengers are only notified, not offered rebooking, since short delays are considered low-risk for missed connections
-- Single notification channel (email); SMS/push notifications are a natural next step but out of scope for the 48-hour window
-- SQLite is used for quick local development; PostgreSQL is used in the deployed environment for proper concurrent-write handling
-- Admin/staff distinction uses Django's built-in `is_staff` flag rather than a separate role model, to keep the MVP simple
-- The recovery portal is intentionally public and PNR-based (not requiring login) to mirror how a real disruption email link should work — a passenger shouldn't need to remember a password mid-disruption to check their options
+- No payment gateway — Refund and Voucher just update booking status
+- Flight and passenger data is mock/seeded, not a real airline inventory system
+- Delay < 120 minutes = notify only; ≥ 120 minutes or Cancelled = recovery options offered
+- Email is the only notification channel (no SMS/push)
+- SQLite for local dev, PostgreSQL in production
+- Admin access uses Django's built-in is_staff flag
+- Recovery portal is public and PNR-based, so passengers can act from the email link without logging in
 
 ---
 
