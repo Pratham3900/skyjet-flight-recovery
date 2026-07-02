@@ -140,8 +140,8 @@ Password: 12345678
 
 ## Known limitations
 
-- Email does not work on the live Render deployment — outbound SMTP (port 587) is blocked on Render's free tier. The app works correctly with email when run locally. Booking/registration/recovery actions still complete successfully on Render; only the email notification step fails silently in the background.
-
+- Email does not work on the live Render deployment. Render's free hosting blocks outgoing email connections (SMTP) as a spam-prevention measure — this is a hosting platform restriction, not a bug in the app. Email works correctly when the app is run locally. All other actions (registration, booking, admin flight updates, recovery options) complete successfully on Render regardless.
+  
 ## Future enhancements
 
 - Move email sending to a transactional email API to work reliably on any host
