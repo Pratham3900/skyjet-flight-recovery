@@ -161,7 +161,7 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 
-**7. Seed demo flight data**
+**7. Seed demo flight data (Test Data Must run for See the flight data)**
 ```bash
 python manage.py seed_flights
 ```
