@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body style="margin:0; padding:0; background-color:#f4f6f8; font-family:'Segoe UI', Arial, sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f4f6f8; padding:30px 0;">
+<tr><td align="center">
+<table width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 2px 10px rgba(0,0,0,0.08);">
+
+<tr><td style="background-color:#0b2e59; padding:30px 40px; text-align:center;">
+<span style="color:#ffffff; font-size:26px; font-weight:700; letter-spacing:1px;">SkyJet Airways</span>
+</td></tr>
+<tr><td style="background-color:#1d78c1; height:6px;"></td></tr>
+
+<tr><td style="padding:40px;">
+<h2 style="color:#0b2e59; margin:0 0 16px 0; font-size:22px;">Booking confirmed, {{ username }}!</h2>
+<p style="color:#444444; font-size:15px; line-height:1.6; margin:0 0 24px 0;">
+Your seat is booked. Here are your flight details:
+</p>
+
+<table cellpadding="0" cellspacing="0" style="background-color:#f4f6f8; border-radius:8px; width:100%; margin-bottom:24px;">
+<tr><td style="padding:20px 24px;">
+<p style="margin:0 0 8px 0; font-size:13px; color:#777;">PNR / Booking reference</p>
+<p style="margin:0 0 20px 0; font-size:24px; font-weight:700; color:#0b2e59; letter-spacing:2px;">{{ pnr }}</p>
+
+<table width="100%" cellpadding="0" cellspacing="0">
+<tr>
+<td style="font-size:14px; color:#444; padding:4px 0;"><strong>Flight</strong></td>
+<td style="font-size:14px; color:#444; padding:4px 0; text-align:right;">{{ flight.flight_number }}</td>
+</tr>
+<tr>
+<td style="font-size:14px; color:#444; padding:4px 0;"><strong>Route</strong></td>
+<td style="font-size:14px; color:#444; padding:4px 0; text-align:right;">{{ flight.origin }} → {{ flight.destination }}</td>
+</tr>
+<tr>
+<td style="font-size:14px; color:#444; padding:4px 0;"><strong>Departure</strong></td>
+<td style="font-size:14px; color:#444; padding:4px 0; text-align:right;">{{ flight.departure_time }}</td>
+</tr>
+<tr>
+<td style="font-size:14px; color:#444; padding:4px 0;"><strong>Arrival</strong></td>
+<td style="font-size:14px; color:#444; padding:4px 0; text-align:right;">{{ flight.arrival_time }}</td>
+</tr>
+</table>
+</td></tr>
+</table>
+
+<p style="color:#777777; font-size:13px; line-height:1.6;">
+Keep this email for your records. If your flight status changes, we'll notify you immediately with recovery options.
+</p>
+</td></tr>
+
+<tr><td style="border-top:1px solid #e6e6e6;"></td></tr>
+<tr><td style="padding:24px 40px; text-align:center;">
+<p style="color:#999999; font-size:12px; margin:0;">&copy; 2026 SkyJet Airways. All rights reserved.</p>
+</td></tr>
+
+</table>
+</td></tr>
+</table>
+</body>
+</html>

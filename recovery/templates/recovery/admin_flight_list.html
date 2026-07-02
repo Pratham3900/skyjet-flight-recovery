@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="dashboard-header">
+    <h2>Manage flights</h2>
+</div>
+
+<form method="get" class="search-form">
+    <input type="text" name="q" value="{{ query }}" placeholder="Search by city, flight number, or status">
+    <button type="submit">Search</button>
+    {% if query %}<a href="{% url 'admin_flight_list' %}" class="clear-link">Clear</a>{% endif %}
+</form>
+
+{% for route in grouped_routes %}
+<div class="route-group">
+    <div class="route-header">
+        <span>{{ route.origin }}</span>
+        <i class="route-arrow">→</i>
+        <span>{{ route.destination }}</span>
+        <span class="route-count">{{ route.flights|length }} flight{{ route.flights|length|pluralize }}</span>
+    </div>
+
+    {% for flight in route.flights %}
+    <div class="flight-card">
+        <div class="flight-info">
+            <strong>{{ flight.flight_number }}</strong>
+            <span>{{ flight.departure_time }}</span>
+            <span class="status-badge status-{{ flight.status|lower }}">{{ flight.status }}</span>
+        </div>
+        <a href="{% url 'admin_update_flight_status' flight.id %}" class="btn-primary">Update status</a>
+    </div>
+    {% endfor %}
+</div>
+{% empty %}
+<p>No flights found{% if query %} for "{{ query }}"{% endif %}.</p>
+{% endfor %}
+{% endblock %}

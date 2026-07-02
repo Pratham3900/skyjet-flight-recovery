@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Available flights</h2>
+{% for flight in flights %}
+<div class="flight-card">
+    <div class="flight-info">
+        <strong>{{ flight.flight_number }}</strong>
+        <span>{{ flight.origin }} → {{ flight.destination }}</span>
+        <span>{{ flight.departure_time }}</span>
+    </div>
+    <form method="post" action="{% url 'book_flight' flight.id %}">
+        {% csrf_token %}
+        <button type="submit">Book</button>
+    </form>
+</div>
+{% empty %}
+<p>No flights available right now.</p>
+{% endfor %}
+{% endblock %}

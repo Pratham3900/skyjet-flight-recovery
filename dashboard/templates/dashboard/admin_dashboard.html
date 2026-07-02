@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Admin — Flight Operations</h2>
+<div class="admin-actions">
+    <a href="{% url 'admin_flight_list' %}" class="btn-primary">Manage flights</a>
+    <a href="{% url 'admin_bookings_list' %}" class="btn-primary">View bookings</a>
+</div>
+{% endblock %}

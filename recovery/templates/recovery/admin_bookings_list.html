@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="dashboard-header">
+    <h2>All bookings</h2>
+   </div>
+
+<form method="get" class="search-form">
+    <input type="text" name="q" value="{{ query }}" placeholder="Search by PNR, passenger, or flight number" spellcheck="false" autocomplete="off">
+    <select name="status">
+        <option value="">All statuses</option>
+        {% for value, label in status_choices %}
+        <option value="{{ value }}" {% if status_filter == value %}selected{% endif %}>{{ label }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Filter</button>
+    {% if query or status_filter %}<a href="{% url 'admin_bookings_list' %}" class="clear-link">Clear</a>{% endif %}
+</form>
+
+<div class="bookings-table">
+    <div class="bookings-table-header">
+        <span>PNR</span>
+        <span>Passenger</span>
+        <span>Flight</span>
+        <span>Route</span>
+        <span>Status</span>
+    </div>
+
+    {% for booking in bookings %}
+    <div class="bookings-table-row">
+        <span class="pnr-cell">{{ booking.pnr }}</span>
+        <span>{{ booking.passenger.username }}</span>
+        <span>{{ booking.flight.flight_number }}</span>
+        <span>{{ booking.flight.origin }} → {{ booking.flight.destination }}</span>
+        <span class="status-badge status-{{ booking.status|lower|cut:' ' }}">{{ booking.status }}</span>
+    </div>
+    {% empty %}
+    <p class="empty-msg">No bookings found.</p>
+    {% endfor %}
+</div>
+{% endblock %}

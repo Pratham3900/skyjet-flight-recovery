@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Update status — {{ flight.flight_number }}</h2>
+
+<form method="post" class="status-form-card" id="status-form">
+    {% csrf_token %}
+
+    <label for="id_status">Status</label>
+    {{ form.status }}
+
+    <div class="delay-field" id="delay-wrapper">
+        <label for="id_delay_minutes">Delay minutes</label>
+        {{ form.delay_minutes }}
+    </div>
+
+    <button type="submit">Save & Notify Passengers</button>
+</form>
+
+<script>
+    const statusField = document.getElementById('id_status');
+    const delayWrapper = document.getElementById('delay-wrapper');
+
+    function toggleDelayField() {
+        if (statusField.value === 'Delayed') {
+            delayWrapper.classList.remove('hidden');
+        } else {
+            delayWrapper.classList.add('hidden');
+        }
+    }
+
+    statusField.addEventListener('change', toggleDelayField);
+    toggleDelayField(); // run on page load in case status is already "Delayed"
+</script>
+{% endblock %}

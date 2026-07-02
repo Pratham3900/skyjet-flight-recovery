@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="dashboard-header">
+    <h2>Welcome, {{ user.username }}</h2>
+    <a href="{% url 'flight_list' %}" class="btn-primary">Book a flight</a>
+</div>
+
+<h3 style="margin-top:30px;">Your bookings</h3>
+
+{% for booking in bookings %}
+<div class="booking-card">
+    <div class="booking-info">
+        <strong>{{ booking.flight.flight_number }}</strong>
+        <span>{{ booking.flight.origin }} → {{ booking.flight.destination }}</span>
+        <span>Departure: {{ booking.flight.departure_time }}</span>
+        <span>PNR: {{ booking.pnr }}</span>
+    </div>
+    <span class="status-badge status-{{ booking.status|lower|cut:' ' }}">{{ booking.status }}</span>
+</div>
+{% empty %}
+<p>You haven't booked any flights yet.</p>
+{% endfor %}
+{% endblock %}

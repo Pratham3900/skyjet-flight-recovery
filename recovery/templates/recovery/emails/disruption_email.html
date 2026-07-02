@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"></head>
+<body style="margin:0; padding:0; background-color:#f4f6f8; font-family:'Segoe UI', Arial, sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f4f6f8; padding:30px 0;">
+<tr><td align="center">
+<table width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff; border-radius:10px; overflow:hidden; box-shadow:0 2px 10px rgba(0,0,0,0.08);">
+
+<tr><td style="background-color:#0b2e59; padding:30px 40px; text-align:center;">
+<span style="color:#ffffff; font-size:26px; font-weight:700;">SkyJet Airways</span>
+</td></tr>
+<tr><td style="background-color:#d85a30; height:6px;"></td></tr>
+
+<tr><td style="padding:40px;">
+<h2 style="color:#0b2e59; margin:0 0 16px 0;">Update on flight {{ flight.flight_number }}</h2>
+<p style="color:#444; font-size:15px; line-height:1.6;">
+Hi {{ username }}, your flight from {{ flight.origin }} to {{ flight.destination }} is currently
+<strong style="color:#d85a30;">{{ flight.status }}</strong>{% if flight.status == 'Delayed' %} by {{ flight.delay_minutes }} minutes{% endif %}.
+</p>
+
+{% if show_portal %}
+<p style="color:#444; font-size:15px; line-height:1.6;">You can rebook, request a refund, choose a travel voucher, or speak to an agent — instantly, no waiting on hold.</p>
+<table cellpadding="0" cellspacing="0" style="margin:20px 0;">
+<tr><td style="background-color:#0b2e59; border-radius:6px;">
+<a href="{{ portal_url }}" style="display:inline-block; padding:12px 28px; color:#fff; text-decoration:none; font-weight:600;">Manage my booking</a>
+</td></tr>
+</table>
+{% else %}
+<p style="color:#777; font-size:14px;">No action is needed right now — we'll keep you updated as we know more.</p>
+{% endif %}
+
+<p style="color:#999; font-size:13px;">Booking reference: {{ pnr }}</p>
+</td></tr>
+
+<tr><td style="border-top:1px solid #e6e6e6;"></td></tr>
+<tr><td style="padding:24px 40px; text-align:center;">
+<p style="color:#999; font-size:12px; margin:0;">&copy; 2026 SkyJet Airways. All rights reserved.</p>
+</td></tr>
+
+</table>
+</td></tr>
+</table>
+</body>
+</html>

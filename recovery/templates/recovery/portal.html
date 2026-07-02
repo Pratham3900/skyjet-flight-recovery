@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyJet Airways — Booking {{ booking.pnr }}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="{% url 'home' %}" class="brand">SkyJet</a>
+    </nav>
+
+    <div class="content">
+        <div class="portal-header">
+            <h2>Booking {{ booking.pnr }}</h2>
+            <p class="portal-flight">Flight {{ flight.flight_number }} — {{ flight.origin }} → {{ flight.destination }}</p>
+            <p class="portal-status">Status: <span class="status-badge status-{{ flight.status|lower }}">{{ flight.status }}</span></p>
+        </div>
+
+        {% if not eligible %}
+            <div class="portal-card">
+                <p class="no-action-msg">Your flight is delayed but within our normal recovery window. No action is needed — we'll keep you updated.</p>
+            </div>
+        {% else %}
+            <form method="post" class="portal-card">
+                {% csrf_token %}
+                <label class="action-label">Choose how you'd like to proceed</label>
+
+                <div class="action-options">
+                    {% for radio in form.action %}
+                    <label class="action-option">
+                        {{ radio.tag }}
+                        <span class="action-option-text">{{ radio.choice_label }}</span>
+                    </label>
+                    {% endfor %}
+                </div>
+
+                <button type="submit">Continue</button>
+            </form>
+        {% endif %}
+    </div>
+
+</body>
+</html>

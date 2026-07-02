@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyJet Airways — Choose alternate flight</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="{% url 'home' %}" class="brand">SkyJet</a>
+    </nav>
+
+    <div class="content">
+        <div class="portal-header">
+            <h2>Choose an alternate flight</h2>
+            <p class="portal-flight">Original booking {{ booking.pnr }} — {{ booking.flight.origin }} → {{ booking.flight.destination }}</p>
+        </div>
+
+        <form method="post">
+            {% csrf_token %}
+
+            {% for f in alt_flights %}
+            <div class="flight-card">
+                <div class="flight-info">
+                    <strong>{{ f.flight_number }}</strong>
+                    <span>{{ f.departure_time }}</span>
+                    <span>{{ f.seats_available }} seats available</span>
+                </div>
+                <button type="submit" name="flight_id" value="{{ f.id }}">Select</button>
+            </div>
+            {% empty %}
+            <div class="portal-card">
+                <p class="no-action-msg">No alternate flights available right now — please contact an agent.</p>
+            </div>
+            {% endfor %}
+        </form>
+    </div>
+
+</body>
+</html>
