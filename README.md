@@ -10,6 +10,14 @@ A digital self-service platform that lets passengers resolve flight disruptions 
 
 **GitHub repo:** [https://github.com/Pratham3900/skyjet-flight-recovery](https://github.com/Pratham3900/skyjet-flight-recovery)
 
+## API documentation (Swagger)
+
+Interactive API documentation is available at:
+
+**[https://skyjet-flight-recovery.onrender.com/api/docs/](https://skyjet-flight-recovery.onrender.com/api/docs/)**
+
+Generated automatically from the Django REST Framework views using `drf-spectacular` (OpenAPI 3 schema).
+
 > Note: the live app is hosted on Render's free tier, which spins down after 15 minutes of inactivity. The first request after idle may take 30–50 seconds to respond.
 
 ---
