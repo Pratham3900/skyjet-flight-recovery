@@ -34,7 +34,6 @@ def book_flight(request, flight_id):
         form = BookingConfirmForm(request.POST)
         if form.is_valid():
             booking = Booking.objects.create(passenger=request.user, flight=flight)
-
             try:
                 html_content = render_to_string('flights/emails/booking_email.html', {
                     'username': request.user.username,
@@ -51,7 +50,6 @@ def book_flight(request, flight_id):
                 email.send(fail_silently=False)
             except Exception as e:
                 print(f"Email failed for booking {booking.pnr}: {e}")
-
             return redirect('booking_confirmation', booking_id=booking.id)
     return redirect('flight_list')
 
