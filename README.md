@@ -10,6 +10,14 @@ A digital self-service platform that lets passengers resolve flight disruptions 
 
 **GitHub repo:** [https://github.com/Pratham3900/skyjet-flight-recovery](https://github.com/Pratham3900/skyjet-flight-recovery)
 
+## API documentation (Swagger)
+
+Interactive API documentation is available at:
+
+**[https://skyjet-flight-recovery.onrender.com/api/docs/](https://skyjet-flight-recovery.onrender.com/api/docs/)**
+
+Generated automatically from the Django REST Framework views using `drf-spectacular` (OpenAPI 3 schema).
+
 > Note: the live app is hosted on Render's free tier, which spins down after 15 minutes of inactivity. The first request after idle may take 30–50 seconds to respond.
 
 ---
@@ -205,7 +213,7 @@ Visit `http://127.0.0.1:8000` in your browser.
 4. Log out, log back in as the superuser account created in setup step 6
 5. Go to **Dashboard → Manage flights**, find the flight you just booked, and mark it **Cancelled** (or **Delayed** with delay minutes ≥ 120)
 6. Check the passenger's inbox for the disruption email with the recovery portal link
-7. Open that link (no login needed) and pick a recovery option — Rebook, Refund, Voucher, or Contact agent
+7. Open that link (no login needed) and pick a recovery option — Rebook, Refund, Voucher
 8. Check inbox again for the recovery confirmation email
 9. Log in as the passenger and confirm the dashboard now reflects the updated booking status
 10. Log in as admin again and check **Dashboard → View bookings** to see the resolved booking
