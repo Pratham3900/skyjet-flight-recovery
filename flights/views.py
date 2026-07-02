@@ -50,7 +50,7 @@ def book_flight(request, flight_id):
                 email.attach_alternative(html_content, "text/html")
                 email.send(fail_silently=False)
             except Exception as e:
-                pass  # booking still succeeds even if email fails
+                print(f"Email failed for booking {booking.pnr}: {e}")
 
             return redirect('booking_confirmation', booking_id=booking.id)
     return redirect('flight_list')
